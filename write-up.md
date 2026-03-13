@@ -69,7 +69,8 @@ These misconfigurations enable privilege escalation without exploiting vulnerabi
 
 **Alert Details:**
 
-![Elastic Alert](https://github.com/user-attachments/assets/62e1d010-1896-420c-9368-5dc2a9459823/)
+<img width="1555" height="1022" alt="123123" src="https://github.com/user-attachments/assets/8dc3461f-4be8-4f1f-ad87-9e9e8e6bef98" />
+
 
 * **Time:** 2026-03-13 17:27:31 UTC
 * **User:** rr1
