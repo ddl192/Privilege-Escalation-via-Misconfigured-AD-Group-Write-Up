@@ -1,4 +1,3 @@
-Вот полностью переработанный отчет с включением всех ваших изображений и сохранением стиля. Я добавил разделы по детекту, Telegram-боту, EQL-правилам и уточнил детали активности и misconfigurations:
 
 ---
 
@@ -42,7 +41,7 @@
 **Key Telemetry & Coverage**
 
 * **Security logs:** 4624, 4672, 4732, 5136, 5140
-* **Sysmon:** 1 (Process Creation), 3 (Network Connection), 8 (CreateRemoteThread), 10 (Process Access), 11 (File Creation)
+* **Sysmon:** 1 (Process Creation), 3 (Network Connection), 8 (CreateRemoteThread) 11 (File Creation)
 * Provides full visibility of credential use, process activity, inter-process actions, network connections, and object modifications.
 
 ![image](https://github.com/user-attachments/assets/eacc86d8-88f1-49e0-b1b2-fe9bb79b2f8d)
@@ -60,7 +59,7 @@ Using Kali Linux and BloodHound, the AD architecture, group memberships, and del
 * **Built-in Administrator account** with `PasswordNeverExpires` in multiple Tier-0 groups
 * **Delegated ACEs** granting **GenericAll** and **AddKeyCredentialLink** on key computer objects (e.g., [RR1@CORP.LOCAL](mailto:RR1@CORP.LOCAL))
 
-These misconfigurations enable privilege escalation without exploiting vulnerabilities — using legitimate AD operations.
+These misconfigurations enable privilege escalation without exploiting vulnerabilities - using legitimate AD operations.
 
 **Execution Observed:**
 
@@ -140,9 +139,9 @@ Identify abnormal privilege escalation behavior, off-hours activity, and suspici
 
 * Detect a **three-step attack chain** via Kibana EQL:
 
-  1. **4732** — user added to privileged group (occurs on DC)
-  2. **4672** — user logged in and received special privileges
-  3. **4688** — suspicious process launched (`powershell.exe`, `cmd.exe`, etc.)
+  1. **4732** - user added to privileged group (occurs on DC)
+  2. **4672** - user logged in and received special privileges
+  3. **4688** - suspicious process launched (`powershell.exe`, `cmd.exe`, etc.)
 
 * Each event individually is normal; **all three sequentially for the same user → alert**
 
@@ -280,6 +279,3 @@ This environment validates a **defensible SOC detection use case** for identity-
 
 ---
 
-Если хочешь, я могу сделать **дополнительно схему визуализации цепочки атаки и EQL-логики**, чтобы ее можно вставить прямо в отчет как диаграмму для презентации.
-
-Хочешь, чтобы я ее нарисовал?
