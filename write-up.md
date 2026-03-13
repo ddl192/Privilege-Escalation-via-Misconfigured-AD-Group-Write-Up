@@ -3,7 +3,6 @@
 
 # Detection of Privilege Escalation via Active Directory Misconfigurations
 
-**Write-up**
 
 ---
 
@@ -46,6 +45,9 @@
 * **Sysmon:** 1 (Process Creation), 3 (Network Connection), 8 (CreateRemoteThread), 11 (File Creation)
 * Provides full visibility of credential use, process activity, inter-process actions, network connections, and object modifications.
 
+![image](https://github.com/user-attachments/assets/eacc86d8-88f1-49e0-b1b2-fe9bb79b2f8d)
+
+
 ---
 
 ## 2) Observed Activity & Detection
@@ -61,6 +63,8 @@ Using BloodHound and Kali Linux, the AD architecture, group memberships, and del
 
 These misconfigurations enable privilege escalation without exploiting vulnerabilities - using legitimate AD operations.
 
+<img width="1920" height="907" alt="AD Detection Engineering - Google Chrome 10 02 2026 15_46_03" src="https://github.com/user-attachments/assets/0cc979df-9d3f-439c-a5a3-dc14e4b4f265" />
+
 **Execution Observed:**
 
 * User **rr1** added to a privileged group (Account Operators) via DC
@@ -68,6 +72,9 @@ These misconfigurations enable privilege escalation without exploiting vulnerabi
 * Telegram bot triggered **critical alert** outside normal business hours
 
 **Alert Details:**
+
+<img width="1553" height="1035" alt="_Elastic Alerts  _N word (12645) 13 03 2026 21_47_09" src="https://github.com/user-attachments/assets/62e1d010-1896-420c-9368-5dc2a9459823" />
+
 
 * **Time:** 2026-03-13 17:27:31 UTC
 * **User:** rr1
@@ -88,11 +95,16 @@ These misconfigurations enable privilege escalation without exploiting vulnerabi
 
 **Workstation Evidence (DESKTOP-SKCGSH6) - Windows Security + Sysmon:**
 
-* **4624** - Network logon (LogonType 3)
+* ***4732** - A member was added to a security-enabled local group.
+* <img width="1860" height="982" alt="vm mshome net - VMware ESXi - Google Chrome 13 03 2026 21_11_59" src="https://github.com/user-attachments/assets/4c8f9531-6a9e-4cd4-9e36-98a264e66311" />
+
 * **4672** - Special privileges assigned at logon
+* <img width="1862" height="1010" alt="vm mshome net - VMware ESXi - Google Chrome 13 03 2026 21_09_06" src="https://github.com/user-attachments/assets/12a61bbd-074b-4f5d-8bb1-ea4004a4c436" />
+
 * **4688** - Process creation: `powershell.exe`
-* **Sysmon 1,3,8,11** - Process creation, network connections, CreateRemoteThread, Process Access, File Creation
-* Confirms activity with elevated privileges and administrative context
+* <img width="1867" height="984" alt="vm mshome net - VMware ESXi - Google Chrome 13 03 2026 21_09_57" src="https://github.com/user-attachments/assets/2823e9e9-1d99-430d-82a5-8295f03e9b70" />
+
+
 
 **Process Observations:**
 
