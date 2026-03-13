@@ -140,9 +140,9 @@ Identify abnormal privilege escalation behavior, off-hours activity, and suspici
 
 * Detect a **three-step attack chain** via Kibana EQL:
 
-  1. **4732** - user added to privileged group (occurs on DC)
-  2. **4672** - user logged in and received special privileges
-  3. **4688** - suspicious process launched (`powershell.exe`, `cmd.exe`, etc.)
+  **4732** - user added to privileged group (occurs on DC)
+  **4672** - user logged in and received special privileges
+  **4688** - suspicious process launched (`powershell.exe`, `cmd.exe`, etc.)
 
 * Each event individually is normal; **all three sequentially for the same user → alert**
 
@@ -206,9 +206,9 @@ The **Timeline** tool was used to test and refine detection rules before deploym
 * Kibana EQL sequence triggers → Webhook → alerts-logon-events index
 * Python/PowerShell script polls the index every 20s:
 
-  1. Queries new alert documents
-  2. Determines alert type (sequence vs normal)
-  3. Enriches missing fields (user, host, process) and sends to Telegram
+  Queries new alert documents
+  Determines alert type (sequence vs normal)
+  Enriches missing fields (user, host, process) and sends to Telegram
 
 **Field Extraction Logic:**
 
